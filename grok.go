@@ -1,6 +1,7 @@
 package timberchop
 
 import (
+	//"fmt"
 	"github.com/gemsi/grok"
 )
 
@@ -19,7 +20,7 @@ type GrokTest struct {
 func testPattern(patterns string, gtest GrokTest) (res map[string]string, err error) {
 	g := grok.New()
 	g.AddPatternsFromPath(patterns)
-	//fmt.Printf("COMPARE:%v || INPUT: %v\n", gtest.Compare, gtest.Input)
 	values, _ := g.Parse(gtest.Compare, gtest.Input)
+	//fmt.Printf("COMPARE:%v || INPUT: %v || %v\n", gtest.Compare, gtest.Input, values)
 	return values, nil
 }
