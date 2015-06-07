@@ -20,7 +20,7 @@ func TestPatterns(t *testing.T) {
 	for _, f := range files {
 		if strings.HasSuffix(f.Name(), "yml") {
 			testFile := path.Join(basePath, "tests", f.Name())
-			fmt.Printf("> Using YAML test %s... ", f.Name())
+			fmt.Printf("> Using YAML test %s: ", f.Name())
 			filename, _ := filepath.Abs(testFile)
 			yamlFile, err := ioutil.ReadFile(filename)
 			if err != nil {
@@ -35,15 +35,9 @@ func TestPatterns(t *testing.T) {
 			}
 
 			all_ok := true
-			first_test := true
 			var pname string
 			for testname, gtest := range config.Tests {
-				if first_test {
-					fmt.Printf("%s", testname)
-					first_test = false
-				} else {
-					fmt.Printf(", %s", testname)
-				}
+				fmt.Printf(".")
 				testVals, _ := testPattern(path.Join(basePath, "patterns"), gtest)
 				pname = strings.Split(testname, ">")[0]
 				if testVals[pname] != gtest.Input {
