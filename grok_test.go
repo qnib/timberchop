@@ -41,7 +41,7 @@ func TestPatterns(t *testing.T) {
 				testVals, _ := testPattern(path.Join(basePath, "patterns"), gtest)
 				pname = strings.Split(testname, ">")[0]
 				if testVals[pname] != gtest.Input {
-					fmt.Printf("OUTPUT:%v\n", testVals)
+					fmt.Printf("\nOUTPUT:%v\n", testVals)
 					t.Errorf("%s > Should have be equal:\n '%s'\n '%s'\n", testname, testVals[pname], gtest.Input)
 				}
 				for expKey, expVal := range gtest.Result {
